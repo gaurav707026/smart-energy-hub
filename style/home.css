@@ -93,7 +93,10 @@ nav.sticky .nav-links li a:hover {
   width: 500px;
   top: 25%;
   left: 10%;
+<<<<<<< HEAD
   /* transform: translate(-95%, -45%); */
+=======
+>>>>>>> 6c71611393ea577a6391ea238e335787dca777ee
 }
 
 .divider {
