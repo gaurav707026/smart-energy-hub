@@ -90,9 +90,9 @@ nav.sticky .nav-links li a:hover {
   color: aliceblue;
   font-family: "Allerta Stencil";
   display: flex;
-  top: 45%;
-  left: 50%;
-  transform: translate(-95%, -45%);
+  width: 500px;
+  top: 25%;
+  left: 10%;
 }
 
 .divider {
