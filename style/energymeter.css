@@ -1,0 +1,209 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  overflow-x: hidden;
+}
+.main-wrapper {
+  width: 100vw;
+}
+.meter-background-image {
+  width: 100%;
+  position: fixed;
+  height: 100%;
+  z-index: -2;
+  transform: translateY(-12px);
+  object-fit: cover;
+}
+.energy-meter-heading {
+  color: white;
+  font-size: 1.5rem;
+  font-family: Arial, Helvetica, sans-serif;
+  width: 100%;
+}
+.energy-meter-heading h2 {
+  -webkit-backdrop-filter: blur(5px);
+  backdrop-filter: blur(5px);
+  width: fit-content;
+  padding: 10px 20px;
+  margin: 10px auto;
+  border-radius: 40px;
+  border: 1px solid white;
+}
+.main-section {
+  z-index: 2;
+  display: flex;
+  flex-wrap: wrap;
+  /* align-items: center; */
+  justify-content: center;
+  margin: 10px auto;
+  /* background-color: rgba(255, 255, 255, 0.546); */
+  -webkit-backdrop-filter: blur(5px);
+  backdrop-filter: blur(5px);
+  width: 90%;
+  /* height: 90vh; */
+  border-radius: 30px;
+  border: 1px solid white;
+  padding: 20px 0;
+}
+/* left section css */
+.left-section {
+  width: 40%;
+  min-width: 400px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  margin: 30px 0;
+  gap: 30px;
+}
+.energy-limit-section{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: rgba(255, 255, 255, 0.546);
+    -webkit-backdrop-filter: blur(5px);
+    backdrop-filter: blur(5px);
+    border-radius: 10px;
+    /* margin: 4rem; */
+    width: 400px;
+    height: 200px;
+}
+.energy-limit-heading,.notification-heading{
+    font-size: 25px;
+    font-family: Arial, Helvetica, sans-serif;
+    color: #1f5558;
+
+}
+.energy-limit-input{
+    width: 250px;
+    height: 40px;
+    border-radius: 10px;
+    padding: 5px 10px;
+    font-size: 18px;
+}
+.energy-limit-submit-btn{
+    width: 100px;
+    height:35px;
+    font-size: 18px;
+    border-radius: 10px;
+    background-color: #53c686;
+    border: 1px solid white;
+    cursor: pointer;
+}
+
+.notification-section{
+  background-color: rgba(255, 255, 255, 0.546);
+  -webkit-backdrop-filter: blur(5px);
+  backdrop-filter: blur(5px);
+  height: 250px;
+  width: 400px;
+  border-radius: 14px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.notification-heading{
+  width: 100%;
+  text-align: center;
+  padding: 10px 0;
+  border-bottom: 2px solid gray;
+}
+.notification-box{
+  width: 95%;
+  display: flex;
+  flex-direction: column;
+  font-size: 20px;
+  height: 100%;
+  overflow-y: auto;
+  overflow-x: hidden;
+  /* border: 1px solid black; */
+  padding: 5px;
+}
+.notification-box::-webkit-scrollbar {
+  width: 0px;
+}
+.notification{
+  display: flex;
+  width: 100%;
+  height: max-content;
+  border: 1px solid gray;
+  padding: 8px 15px;
+  justify-content: space-between;
+  border-radius: 8px;
+  background-color: #518e917a;
+  margin: 3px;
+  color: white;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+/* right section css */
+.right-section {
+  width: 55%;
+  /* min-width: 700px; */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  padding: 1.2rem 1rem;
+}
+.energy-graph {
+  display: flex;
+  flex-direction: column;
+  /* border: 1px solid black; */
+  width: 90%;
+  min-width: max-content;
+  min-height: max-content;
+  padding: 15px 10px;
+  align-items: center;
+  gap: 30px;
+}
+#energyChart {
+  background-color: rgb(255, 255, 255);
+  /* font-size: 20px; */
+  border: 1px solid black;
+   min-width: 400px;
+   min-height: max-content;
+  border-radius: 8px;
+}
+.meter-switch {
+  background: #ca2626;
+  border: none;
+  border-radius: 25px;
+  color: snow;
+  cursor: pointer;
+  font-size: 1.25em;
+  letter-spacing: 0.1em;
+  outline: none;
+  padding: 0.75em 2em;
+  position: relative;
+  text-transform: uppercase;
+}
+.total-energy-meter {
+  background-color: rgba(255, 255, 255, 0.546);
+  -webkit-backdrop-filter: blur(5px);
+  backdrop-filter: blur(5px);
+  padding: 15px 25px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  border-radius: 8px;
+  width: 300px;
+  height: 100px;
+  font-family: Arial, Helvetica, sans-serif;
+  margin-bottom: 20px;
+  color: #1f5558;
+}
+.energyScale {
+  font-size: 2rem;
+}
+.energy-meter-label {
+  font-size: 20px;
+}

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>current and voltage mater </title>
+    <link rel="stylesheet" href="/style/meter.css">
+    <link rel="stylesheet" href="/style/home.css">
+</head>
+<body>
+    <nav>
+        <div class="nav-content">
+          <div class="logo">
+            <a href="/home.html">SMART ENERGY HUB</a>
+          </div>
+          <ul class="nav-links">
+            <li><a href="/home.html">Home</a></li>
+            <li><a href="/home.html#about">About</a></li>
+            <li><a href="/home.html#component">Component</a></li>
+            <li><a href="/home.html#working">Working</a></li>
+            <li><a href="#">complain</a></li>
+            <li><a href="meter.html">Readings</a></li>
+            <li><a href="./energymeter.html">Energy</a></li>
+          </ul>
+        </div>
+      </nav>
+    <div class="wrapper" id="readings">
+        <div class="main">
+            <div class="meter-heading">
+                <h1>CURRENT AND VOLTAGE READING</h1>
+            </div>
+            <div class="meter-section">
+                <div class="meter">
+                    <div class="main-scale current-meter">
+                        <div class="current-meter-value">0A</div>
+                    </div>
+                    <div class="meter-label">
+                        <h3>CURRENT</h3>
+                    </div>
+                </div>
+                <div class="meter">
+                    <div class="main-scale voltage-meter">
+                        <div class="voltage-meter-value">0V</div>
+                    </div>
+                    <div class="meter-label">
+                        <h3>VOLTAGE</h3>
+                    </div>
+                </div>
+                <div class="meter">
+                    <div class="main-scale wattmeter">
+                        <div class="wattmeter-value">0W</div>
+                    </div>
+                    <div class="meter-label">
+                        <h3>WATTMETER</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="/js/ammeter.js"></script>
+    <script src="/js/voltmeter.js"></script>
+    <script src="/js/wattmeter.js"></script>
+</body>
+</html>

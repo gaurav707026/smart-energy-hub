@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+  <link rel="stylesheet" href="style/home.css" />
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+</head>
+
+<body>
+  <nav>
+    <div class="nav-content">
+      <div class="logo">
+        <a href="home.html">SMART ENERGY HUB</a>
+      </div>
+      <ul class="nav-links">
+        <li><a href="home.html">Home</a></li>
+        <li><a href="home.html#about">About</a></li>
+        <li><a href="home.html#component">Component</a></li>
+        <li><a href="home.html#working">Working</a></li>
+        <li><a href="#">complain</a></li>
+        <li><a href="page/meter.html">Readings</a></li>
+        <li><a href="page/energymeter.html">Energy</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- hero section -->
+  <div class="hero">
+    <img src="assets/background img.jpg" alt="" class="background-img" />
+    <div class="main-heading">
+      <p data-aos="zoom-in" data-aos-duration="1000">
+        "Empowering Tomorrow,<br />
+        One Watt at a Time."
+      </p>
+    </div>
+  </div>
+
+  <!-- <hr class="divider"> -->
+  <div class="wrapper">
+    <div class="main">
+
+      <!-- about the project section -->
+      <div class="about-section" id="about">
+        <div class="about-heading">
+          <p>About The project</p>
+        </div>
+        <div class="about-content">
+          <div class="about-upper-section">
+            <p>
+              Welcome to our innovative initiative in real-time power management through IoT technology. Our project
+              aims to revolutionize how we understand and manage energy consumption, paving the way for a more
+              sustainable future.</p>
+          </div>
+          <div class="about-middle-section">
+            <p>
+              At its core, our project leverages cutting-edge IoT devices, including ESP8266 modules, current and
+              voltage sensors, and GSM modules, to provide real-time monitoring and management of power usage. Through a
+              user-friendly web interface, individuals and organizations can gain insights into their energy consumption
+              patterns, make informed decisions to optimize usage, and contribute towards reducing their carbon
+              footprint.
+            </p>
+            <img src="assets/about project image (1).jpg" alt="" class="about-project-img">
+          </div>
+          <div class="about-lower-section">
+            <p>
+              With features like real-time current, voltage, and power monitoring, along with energy consumption
+              warnings and SMS notifications, our solution empowers users to take proactive measures in managing their
+              energy resources efficiently.</p>
+          </div>
+        </div>
+      </div>
+
+
+      <!-- components of the project -->
+      <div class="component-section" id="component">
+        <div class="component-heading">
+          <p>Components Used in the Project</p>
+        </div>
+        <div class="component-content">
+          <div class="component-box">
+            <img src="assets/esp8266.webp" alt="" class="component-img">
+            <div class="component-label">ESP8266</div>
+            <div class="component-desc">
+              Serving as the central microcontroller unit, the ESP8266 enables wireless connectivity and facilitates
+              data transmission between sensors and the web interface.</div>
+          </div>
+          <div class="component-box">
+            <img src="assets/current sensor.webp" alt="" class="component-img">
+            <div class="component-label">Current sensor</div>
+            <div class="component-desc">
+              This essential component measures the electric current flowing through a circuit in real-time, providing
+              valuable insights into energy consumption patterns.</div>
+          </div>
+          <div class="component-box">
+            <img src="assets/voltage sensor.jpg" alt="" class="component-img">
+            <div class="component-label">Voltage Sensor</div>
+            <div class="component-desc">
+              By accurately measuring the voltage across the circuit, the voltage sensor complements the current sensor,
+              enabling precise calculations of power usage.</div>
+          </div>
+          <div class="component-box">
+            <img src="assets/gsm module.jpg" alt="" class="component-img">
+            <div class="component-label">GSM Module</div>
+            <div class="component-desc">
+              The GSM module enables communication via SMS, allowing for instant notifications regarding energy
+              consumption thresholds and warnings, ensuring timely interventions.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- working of the project -->
+      <div class="working-section" id="working">
+        <div class="working-heading">
+          <p>Working of the Project</p>
+        </div>
+        <div class="working-content">
+          <div class="working-upper-section">
+            <div class="working-subheading">
+              <h4>Hardware Working:</h4>
+            </div>
+            <p>The hardware components of our project work synergistically to enable real-time power management.
+              Utilizing an ESP8266 module as the central hub, current and voltage sensors gather real-time data from the
+              monitored circuit. The ESP8266 processes this data, employing established electrical principles to
+              calculate power consumption. This calculated power data is then transmitted to the backend server for
+              further analysis and storage. Additionally, the GSM module facilitates communication via SMS, allowing for
+              instant notifications when energy consumption thresholds are met or exceeded.</p>
+          </div>
+          <div class="working-lower-section">
+            <div class="working-subheading">
+              <h4>Software Side Working:</h4>
+            </div>
+            <p>
+              The hardware components of our project work synergistically to enable real-time power management.
+              Utilizing an ESP8266 module as the central hub, current and voltage sensors gather real-time data from the
+              monitored circuit. The ESP8266 processes this data, employing established electrical principles to
+              calculate power consumption. This calculated power data is then transmitted to the backend server for
+              further analysis and storage. Additionally, the GSM module facilitates communication via SMS, allowing for
+              instant notifications when energy consumption thresholds are met or exceeded.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>
+    AOS.init();
+  </script>
+</body>
+
+</html>
