@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register Your Complain</title>
+    <link rel="stylesheet" href="/style/home.css">
+    <link rel="stylesheet" href="/style/complain.css">
+</head>
+
+<body>
+    <!-- navbar -->
+    <nav>
+        <div class="nav-content">
+            <div class="logo">
+                <a href="/home.html">SMART ENERGY HUB</a>
+            </div>
+            <ul class="nav-links">
+                <li><a href="/home.html">Home</a></li>
+                <li><a href="/home.html#about">About</a></li>
+                <li><a href="/home.html#component">Component</a></li>
+                <li><a href="/home.html#working">Working</a></li>
+                <li><a href="/page/complain.html">complain</a></li>
+                <li><a href="./meter.html">Readings</a></li>
+                <li><a href="energymeter.html">Energy</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="complain-wrapper">
+        <div class="complain-main">
+            <div class="complain-heading">
+                <p>Register Your Complain</p>
+            </div>
+            <div class="complain-container">
+                <form action="#" method="post" class="complain-box">
+                    <div class="form-group">
+                        <label for="name" class="form-label">Name:</label>
+                        <input type="text" id="name" name="name" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="customerId" class="form-label">Customer ID:</label>
+                        <input type="text" id="customerId" name="customerId" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email" class="form-label">Email:</label>
+                        <input type="email" id="email" name="email" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="complain" class="form-label">Complaint:</label>
+                        <textarea id="complain" name="complain" class="form-textarea" rows="4" cols="50" required></textarea>
+                    </div>
+    
+                    <button type="submit" class="form-submit">Submit Complaint</button>
+                </form>
+                <div class="complain-side-img">
+                    <img src="/assets/image 3.jpg" alt="" class="complain-img">
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</body>
+
+</html>
