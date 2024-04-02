@@ -1,4 +1,30 @@
-
+async function fetchThingspeakData() {
+    try {
+      const response = await fetch('https://api.thingspeak.com/channels/2481015/feeds.json?results=2');
+      if (!response.ok) {
+        throw new Error('Failed to fetch data');
+      }
+      const data = await response.json();
+      return data.feeds[0]; // Only return the first feed
+    } catch (error) {
+      console.error('Error:', error);
+      return null;
+    }
+  }
+  
+  async function energyData() {
+    try {
+      const feed = await fetchThingspeakData();
+      if (!feed) {
+        throw new Error('Failed to fetch data');
+      }
+      const energyValue = parseFloat(feed.field1) * parseFloat(feed.field2);
+      return energyValue;
+    } catch (error) {
+      console.error('Error:', error);
+      return null;
+    }
+  }
 let ctx = document.getElementById('energyChart').getContext('2d');
         let myChart = new Chart(ctx, {
             type: 'line',
@@ -67,7 +93,7 @@ let energyScale = document.querySelector('.energyScale');
 let energyValue = 0;
 let totalEnergy = 0;
 // Function to update chart data
-function updateChart() {
+async function updateChart() {
     // Example data generation
     let currentTime = new Date();
     let currentHour = currentTime.getHours();
@@ -75,10 +101,12 @@ function updateChart() {
     let currentSecond = currentTime.getSeconds();
     let currentTimeLabel = currentHour + ':' + currentMinute + ':' + currentSecond;
     let priorEnergy = energyValue;
-    energyValue = Math.floor(Math.random() * 1000); // Random energy value (replace with actual data)
+    // if(energydata)
+    energyValue =  await energyData(); // Random energy value (replace with actual data)
     totalEnergy += 0.5*(priorEnergy+energyValue);
+    console.log("total Energy: " + totalEnergy);
     if(totalEnergy<3600){
-        energyScale.innerText = totalEnergy+'Ws';
+        energyScale.innerText = totalEnergy.toFixed(2)+'Ws';
     }
     else if(totalEnergy>3600){
         energyScale.innerText = (totalEnergy/3600).toFixed(2)+'Wh';

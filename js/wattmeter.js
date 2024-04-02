@@ -1,12 +1,15 @@
 let wattmeterValue = document.querySelector('.wattmeter-value');
-let wattmeterFullScaleReading = 2000;
+let wattmeterFullScaleReading = 20;
 let wattmeterReading = voltageMeterReading*currentMeterReading;
 let wattmeterRotationAngle = (270/wattmeterFullScaleReading)*wattmeterReading;
-function wattmeterUpdateMeterReading(wattmeterValue, wattmeterReading){
+setInterval(()=>{
+    wattmeterReading = voltageMeterReading*currentMeterReading;
+    wattmeterRotationAngle = (270/wattmeterFullScaleReading)*wattmeterReading;
     wattmeterValue.innerText = wattmeterReading + 'W';
-}
-wattmeterUpdateMeterReading(wattmeterValue, wattmeterReading);
-wattmeterReading.addEventListener('change', wattmeterScaleReading(wattmeterRotationAngle, 22, '#0E1822'));
+    wattmeterScaleReading(wattmeterRotationAngle, 22, '#0E1822')
+    
+}, 1000);
+// wattmeterValue.addEventListener('change', wattmeterScaleReading(wattmeterRotationAngle, 22, '#0E1822'));
 function wattmeterScaleReading(rotationAngle, borderWidth, borderColor) {
     // Create a style element
     var style = document.createElement('style');

@@ -31,8 +31,8 @@ body{
     padding: 20px;
     width: 100%;
     display: flex;
-    flex-wrap: wrap;
-    min-height: 90vh;
+    /* flex-wrap: wrap; */
+    /* min-height: 90vh; */
     justify-content: space-around;
     align-items: center;
 }
