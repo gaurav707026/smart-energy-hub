@@ -5,7 +5,7 @@ let wattmeterRotationAngle = (270/wattmeterFullScaleReading)*wattmeterReading;
 setInterval(()=>{
     wattmeterReading = voltageMeterReading*currentMeterReading;
     wattmeterRotationAngle = (270/wattmeterFullScaleReading)*wattmeterReading;
-    wattmeterValue.innerText = wattmeterReading + 'W';
+    wattmeterValue.innerText = wattmeterReading.toFixed(2) + 'W';
     wattmeterScaleReading(wattmeterRotationAngle, 22, '#0E1822')
     
 }, 1000);
