@@ -17,7 +17,7 @@ function printField2(feeds) {
         voltageMeterValue.innerText = feed.field2 + 'V';
         voltageMeterReading = feed.field2;
         voltageRotationAngle = (270/voltageFullScaleReading)*voltageMeterReading;
-        voltageScaleReading(currentRotationAngle, 22, '#0E1822');
+        voltageScaleReading(voltageRotationAngle, 22, '#0E1822');
 
       });
     } else {
