@@ -2,11 +2,6 @@ let currentMeterValue = document.querySelector('.current-meter-value');
 let currentFullScaleReading = 5;
 let currentMeterReading = 0;
 let currentRotationAngle = 0;
-// function currentUpdateMeterReading(currentMeterValue, currentMeterReading){
-//     currentMeterValue.innerText = currentMeterReading + 'A';
-// }
-// currentUpdateMeterReading(currentMeterValue, currentMeterReading);
-// currentMeterValue.addEventListener('change', currentScaleReading(currentRotationAngle, 22, '#0E1822'));
 
 async function fetchThingspeakData() {
     try {
@@ -15,32 +10,26 @@ async function fetchThingspeakData() {
         throw new Error('Failed to fetch data');
       }
       const data = await response.json();
-      return data.feeds.map(feed => ({ field1: feed.field1, field2: feed.field2 }));
+      return data.feeds[0];
     } catch (error) {
       console.error('Error:', error);
       return null;
     }
   }
   
-  function printField1AndField2(feeds) {
-    if (feeds) {
-        feeds.forEach(feed => {
-        // console.log("Printing current: " + feed.field1 + 'A');
-        currentMeterValue.innerText = feed.field1 + 'A';
-        currentMeterReading = feed.field1;
-        currentRotationAngle = (270/currentFullScaleReading)*currentMeterReading;
-        currentScaleReading(currentRotationAngle, 22, '#0E1822');
-
-      });
-    } else {
-      console.log("Failed to fetch API data.");
-    }
-  }
   
   // Define an async function to use await within setInterval
   async function fetchDataAndPrint() {
     const feeds = await fetchThingspeakData();
-    printField1AndField2(feeds);
+    if(feeds){
+        currentMeterValue.innerText = feeds.field1 + 'A';
+        currentMeterReading = feeds.field1;
+        currentRotationAngle = (270/currentFullScaleReading)*currentMeterReading;
+        currentScaleReading(currentRotationAngle, 22, '#0E1822');
+    }
+    else{
+      console.log("Failed to fetch API data.");
+    }
   }
   
   // Calling the function to fetch and print field1 and field2 every 1 second

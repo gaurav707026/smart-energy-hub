@@ -2,33 +2,19 @@ let voltageMeterValue = document.querySelector('.voltage-meter-value');
 let voltageFullScaleReading = 15;
 let voltageMeterReading = 0;
 let voltageRotationAngle = (270/voltageFullScaleReading)*voltageMeterReading;
-// function voltageUpdateMeterReading(voltageMeterValue, voltageMeterReading){
-//     voltageMeterValue.innerText = voltageMeterReading + 'V';
-// }
-// voltageUpdateMeterReading(voltageMeterValue, voltageMeterReading);
-// voltageMeterReading.addEventListener('change', voltageScaleReading(voltageRotationAngle, 22, '#0E1822'));
 
-
-
-function printField2(feeds) {
-    if (feeds) {
-        feeds.forEach(feed => {
-        // console.log("Printing voltage: " + feed.field2 + 'V');
-        voltageMeterValue.innerText = feed.field2 + 'V';
-        voltageMeterReading = feed.field2;
-        voltageRotationAngle = (270/voltageFullScaleReading)*voltageMeterReading;
-        voltageScaleReading(voltageRotationAngle, 22, '#0E1822');
-
-      });
-    } else {
-      console.log("Failed to fetch API data.");
-    }
-  }
-  
   // Define an async function to use await within setInterval
   async function fetchDataAndPrint() {
     const feeds = await fetchThingspeakData();
-    printField2(feeds);
+    if(feeds){
+      voltageMeterValue.innerText = feeds.field2 + 'V';
+        voltageMeterReading = feeds.field2;
+        voltageRotationAngle = (270/voltageFullScaleReading)*voltageMeterReading;
+        voltageScaleReading(voltageRotationAngle, 22, '#0E1822');
+    }
+    else{
+      console.log("Failed to fetch API data.");
+    }
   }
   
   // Calling the function to fetch and print field1 and field2 every 1 second
