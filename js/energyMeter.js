@@ -84,7 +84,7 @@ let ctx = document.getElementById('energyChart').getContext('2d');
                 }
             }
         });
-let energyLimit = document.querySelector(".energy-limit-input");
+let energyLimit = document.querySelector(".energy-limit");
 let energyLimitButton = document.querySelector(".energy-limit-submit-btn");
 let energyLimitingValue = 0;
 let meterSwitch = document.querySelector('.meter-switch');
@@ -92,7 +92,8 @@ let energyMeterSwitch = false;
 let energyScale = document.querySelector('.energyScale');
 let energyValue = 0;
 let totalEnergy = 0;
-// Function to update chart data
+
+// Function to update chart data 
 async function updateChart() {
     // Example data generation
     let currentTime = new Date();
@@ -112,7 +113,10 @@ async function updateChart() {
         energyScale.innerText = (totalEnergy/3600).toFixed(2)+'Wh';
     }
     if(energyLimitingValue!=0 && totalEnergy>energyLimitingValue){
+        
         insertNotification('Energy Limit Reached', energyLimitingValue/3600);
+        SendMail();
+        console.log("function called");
         energyLimitingValue = 0;
     }
     // Add new data to chart
@@ -156,6 +160,7 @@ energyLimitButton.addEventListener('click', function checkEnergyLimit(){
         energyLimitingValue = parseInt(energyLimit.value)*3600;
         insertNotification('Energy Limit Set', energyLimit.value);
         energyLimit.value = '';
+
     }
     else{
         alert("Enter Any finite value!!!");
@@ -187,4 +192,15 @@ function insertNotification(paragraphValue, dataValue) {
     if (notificationBox) {
         notificationBox.insertBefore(newNotification, notificationBox.firstChild);
     }
+}
+
+function SendMail(){
+    var params = {
+        user_email : document.getElementById("user_email").value,
+        energy_limit : document.getElementById("energy_limit").value
+
+    }
+    emailjs.send("service_ovh7vea", "template_ngcpdr7", params).then(function (res){
+        alert("success" +res.status);
+    });
 }

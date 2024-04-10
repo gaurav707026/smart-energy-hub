@@ -8,6 +8,13 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <link rel="stylesheet" href="/style/energymeter.css">
     <link rel="stylesheet" href="/style/home.css">
+
+    <script type="text/javascript"
+    src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+
+    <script type="text/javascript">
+        emailjs.init('fIVJ1EqhTD3gQxjQa')
+    </script>
 </head>
 
 <body>
@@ -44,8 +51,9 @@
                     <div class="energy-limit-heading">
                         <h3>Set Energy Limit</h3>
                     </div>
-                    <input type="number" placeholder="Enter Energy(Wh)..." class="energy-limit-input" min="0">
-                    <input type="submit" class="energy-limit-submit-btn">
+                    <input type="number" id="energy_limit" placeholder="Enter Energy(Wh)..." class="energy-limit-input energy-limit" min="0">
+                    <input type="email" id="user_email" placeholder="Enter your E-mail..." class="energy-limit-input user-email" min="0">
+                    <button type="submit" class="energy-limit-submit-btn">Submit </button>
                 </div>
                 <div class="notification-section">
                     <div class="notification-heading"><h3>Notifications:</h3></div>
