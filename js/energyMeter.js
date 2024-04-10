@@ -84,7 +84,8 @@ let ctx = document.getElementById('energyChart').getContext('2d');
                 }
             }
         });
-let energyLimit = document.querySelector(".energy-limit");
+let energyLimit = document.querySelector(".energy-limit-value");
+let userEmail = document.getElementById("user_email");
 let energyLimitButton = document.querySelector(".energy-limit-submit-btn");
 let energyLimitingValue = 0;
 let meterSwitch = document.querySelector('.meter-switch');
@@ -92,6 +93,8 @@ let energyMeterSwitch = false;
 let energyScale = document.querySelector('.energyScale');
 let energyValue = 0;
 let totalEnergy = 0;
+let emailId = '';
+let limitToSend = 0;
 
 // Function to update chart data 
 async function updateChart() {
@@ -104,8 +107,9 @@ async function updateChart() {
     let priorEnergy = energyValue;
     // if(energydata)
     energyValue =  await energyData(); // Random energy value (replace with actual data)
+    // energyValue =  10*Math.random(); // Random energy value (replace with actual data)
     totalEnergy += 0.5*(priorEnergy+energyValue);
-    console.log("total Energy: " + totalEnergy);
+    // console.log("total Energy: " + totalEnergy);
     if(totalEnergy<3600){
         energyScale.innerText = totalEnergy.toFixed(2)+'Ws';
     }
@@ -114,10 +118,11 @@ async function updateChart() {
     }
     if(energyLimitingValue!=0 && totalEnergy>energyLimitingValue){
         
-        insertNotification('Energy Limit Reached', energyLimitingValue/3600);
-        SendMail();
-        console.log("function called");
+        insertNotification('Energy Limit Reached', energyLimitingValue);
+        limitToSend = energyLimitingValue
+        await SendMail();
         energyLimitingValue = 0;
+        console.log("function called");
     }
     // Add new data to chart
     if(myChart.data.labels.length <= 10){
@@ -133,12 +138,13 @@ async function updateChart() {
         myChart.data.datasets[0].data.push(energyValue);
     }
 
-    // Update chart
-    myChart.update();
-
-    // Call the function recursively every second
     if(energyMeterSwitch)
     setTimeout(updateChart, 1000);
+
+
+    // Call the function recursively every second
+    // Update chart
+    myChart.update();
 }
 meterSwitch.addEventListener('click', function startPlottingGraph(){
     energyMeterSwitch = !energyMeterSwitch;
@@ -156,14 +162,18 @@ meterSwitch.addEventListener('click', function startPlottingGraph(){
 
 
 energyLimitButton.addEventListener('click', function checkEnergyLimit(){
-    if(energyLimit.value!=0){
-        energyLimitingValue = parseInt(energyLimit.value)*3600;
+    if(energyLimit.value!=0 && userEmail.value != ''){
+        energyLimitingValue = parseFloat(energyLimit.value);
+        emailId = userEmail.value;
         insertNotification('Energy Limit Set', energyLimit.value);
         energyLimit.value = '';
-
+        userEmail.value = '';
     }
-    else{
+    else if(energyLimit.value == ''){
         alert("Enter Any finite value!!!");
+    }
+    else if(userEmail.value == ''){
+        alert("Enter your email..")
     }
 });
 
@@ -179,7 +189,7 @@ function insertNotification(paragraphValue, dataValue) {
     // Create a div element for the data with the provided value
     var dataDiv = document.createElement('div');
     dataDiv.className = 'data';
-    dataDiv.textContent = dataValue + 'Wh';
+    dataDiv.textContent = dataValue + 'Ws';
 
     // Append the paragraph and data elements to the notification element
     newNotification.appendChild(paragraph);
@@ -194,13 +204,18 @@ function insertNotification(paragraphValue, dataValue) {
     }
 }
 
-function SendMail(){
+async function SendMail(){
     var params = {
-        user_email : document.getElementById("user_email").value,
-        energy_limit : document.getElementById("energy_limit").value
+        // user_email : document.getElementById("user_email").value,
+        user_email : emailId,
+        // energy_limit : document.getElementById("energy_limit").value
+        energy_limit : limitToSend
 
     }
-    emailjs.send("service_ovh7vea", "template_ngcpdr7", params).then(function (res){
-        alert("success" +res.status);
+     emailjs.send("service_ovh7vea", "template_ngcpdr7", params).then(function (res){
+        console.log(limitToSend);
+        limitToSend = 0;
+
+        console.log("success" + res.status);
     });
 }
