@@ -218,5 +218,4 @@ body {
 .meter-switch:hover {
   transform: scale(1.01);
   box-shadow: 2px 2px 10px gray;
-  background-color: white;
 }
