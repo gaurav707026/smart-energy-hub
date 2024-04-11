@@ -18,7 +18,7 @@ async function fetchThingspeakData() {
       if (!feed) {
         throw new Error('Failed to fetch data');
       }
-      const energyValue = parseFloat(feed.field1) * parseFloat(feed.field2);
+      const energyValue = parseFloat(feed.field1) * parseFloat(feed.field2)*0.001;
       return energyValue;
     } catch (error) {
       console.error('Error:', error);

@@ -1,5 +1,5 @@
 let currentMeterValue = document.querySelector('.current-meter-value');
-let currentFullScaleReading = 5;
+let currentFullScaleReading = 10;
 let currentMeterReading = 0;
 let currentRotationAngle = 0;
 
@@ -22,7 +22,7 @@ async function fetchThingspeakData() {
   async function fetchDataAndPrint() {
     const feeds = await fetchThingspeakData();
     if(feeds){
-        currentMeterValue.innerText = feeds.field1 + 'A';
+        currentMeterValue.innerText = feeds.field1 + 'mA';
         currentMeterReading = feeds.field1;
         currentRotationAngle = (270/currentFullScaleReading)*currentMeterReading;
         currentScaleReading(currentRotationAngle, 22, '#0E1822');
