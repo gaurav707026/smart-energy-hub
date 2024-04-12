@@ -1,11 +1,11 @@
 let wattmeterValue = document.querySelector('.wattmeter-value');
-let wattmeterFullScaleReading = 5;
-let wattmeterReading = voltageMeterReading*currentMeterReading*0.001;
+let wattmeterFullScaleReading = 80;
+let wattmeterReading = voltageMeterReading*currentMeterReading;
 let wattmeterRotationAngle = (270/wattmeterFullScaleReading)*wattmeterReading;
 setInterval(()=>{
-    wattmeterReading = voltageMeterReading*currentMeterReading*0.001;
+    wattmeterReading = voltageMeterReading*currentMeterReading;
     wattmeterRotationAngle = (270/wattmeterFullScaleReading)*wattmeterReading;
-    wattmeterValue.innerText = wattmeterReading.toFixed(2) + 'W';
+    wattmeterValue.innerText = wattmeterReading.toFixed(2) + 'mW';
     wattmeterScaleReading(wattmeterRotationAngle, 22, '#0E1822')
     
 }, 1000);

@@ -22,8 +22,17 @@ async function fetchThingspeakData() {
   async function fetchDataAndPrint() {
     const feeds = await fetchThingspeakData();
     if(feeds){
-        currentMeterValue.innerText = feeds.field1 + 'mA';
-        currentMeterReading = feeds.field1;
+      if(feeds.field2>7){
+        currentMeterReading = feeds.field2/1.23;
+      }
+      else if(feeds.field2>4){
+        currentMeterReading = feeds.field2/0.82;
+      }
+      else if(feeds.field2<4){
+        currentMeterReading = feeds.field2/0.41;
+      }
+        currentMeterValue.innerText = currentMeterReading.toFixed(2) + 'mA';
+        currentMeterReading = currentMeterReading.toFixed(2);
         currentRotationAngle = (270/currentFullScaleReading)*currentMeterReading;
         currentScaleReading(currentRotationAngle, 22, '#0E1822');
     }

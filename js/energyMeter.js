@@ -150,12 +150,12 @@ meterSwitch.addEventListener('click', function startPlottingGraph(){
     energyMeterSwitch = !energyMeterSwitch;
     if(energyMeterSwitch){
         meterSwitch.setAttribute("style", "background:#4CAF50;");
-        insertNotification("EnergyMeter Started!!", (totalEnergy/3600).toFixed(2));
+        insertNotification("EnergyMeter Started!!", (totalEnergy).toFixed(2));
         updateChart();
     }
     else{
         meterSwitch.setAttribute("style", "background:#ca2626;");
-        insertNotification("EnergyMeter Stopped!!", (totalEnergy/3600).toFixed(2));
+        insertNotification("EnergyMeter Stopped!!", (totalEnergy).toFixed(2));
         return;
     }
 });
@@ -215,7 +215,6 @@ async function SendMail(){
      emailjs.send("service_ovh7vea", "template_ngcpdr7", params).then(function (res){
         console.log(limitToSend);
         limitToSend = 0;
-
         console.log("success" + res.status);
     });
 }
